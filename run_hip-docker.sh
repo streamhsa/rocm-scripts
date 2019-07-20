@@ -1,10 +1,10 @@
 #!/bin/bash
 current=`pwd`
-cwd=$HOME/dockerx
+cwd=/dockerx
 
-dir1=$HOME/dockerx
+dir1=/root/
 rm -rf $dir1/HIP
-dir=$HOME/dockerx/HIP
+dir=/root/HIP
 
 cd $dir1
 
