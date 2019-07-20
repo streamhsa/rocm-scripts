@@ -4,7 +4,7 @@ current=`pwd`
 LOGDIR=/dockerx
 BENCHDIR=/root/benchmarks
 BASEDIR=/root
-BUILD=346
+#BUILD=346
 
 download_tensorflow_benchmarks()
 {
@@ -40,7 +40,7 @@ run_tf_xla_cnn_bm()
         do
     /usr/bin/python3 ./scripts/tf_cnn_benchmarks/tf_cnn_benchmarks.py --model=$i \
     --print_training_accuracy=True \
-    --num_gpus=${NGPUS}  --xla 2>&1 | tee $LOGDIR/tfxla-$i-$BUILD.txt
+    --num_gpus=${NGPUS} --xla 2>&1 | tee $LOGDIR/tfxla-$i.txt
   #  done
     done
 
