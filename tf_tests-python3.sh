@@ -8,13 +8,11 @@
 cwd=`pwd`
 BASEDIR=$HOME
 
-cd $cwd
-#rm -rf logs
-mkdir -p tf-logs
+mkdir -p /dockerx/tf-logs
 
 export MODELDIR="$BASEDIR/models"
 export BENCHDIR="$BASEDIR/benchmarks"
-export LOGDIR="$cwd/tf-logs"
+export LOGDIR="/dockerx/tf-logs"
 
 download_tensorflow_models()
 {
@@ -218,7 +216,7 @@ run_resnet_on_cifar10
 run_imagenet_classify
 run_slim_lenet
 run_slim_cifarnet
-run_tf_cnn_benchmarks
+#run_tf_cnn_benchmarks
 
 
 cd $LOGDIR
