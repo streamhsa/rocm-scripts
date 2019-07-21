@@ -26,6 +26,36 @@ fi
 ################################################################################
 # C++ tests #
 ################################################################################
+echo "Running C++ tests.."
+for test in $(find "$cpp_test_dir" -executable -type f); do
+  case "$test" in
+    # skip tests we know are hanging or bad
+    */mkl_utils_test|*/aten/integer_divider_test)
+      continue
+      ;;
+    */scalar_tensor_test|*/basic|*/native_test)
+      if [[ "$BUILD_ENVIRONMENT" == *rocm* ]]; then
+        continue
+      else
+        LD_LIBRARY_PATH="$ld_library_path" "$test"
+      fi
+      ;;
+    *)
+      # Currently, we use a mixture of gtest (caffe2) and Catch2 (ATen). While
+      # planning to migrate to gtest as the common PyTorch c++ test suite, we
+      # currently do NOT use the xml test reporter, because Catch doesn't
+      # support multiple reporters
+      # c.f. https://github.com/catchorg/Catch2/blob/master/docs/release-notes.md#223
+      # which means that enabling XML output means you lose useful stdout
+      # output for Jenkins.  It's more important to have useful console
+      # output than it is to have XML output for Jenkins.
+      # Note: in the future, if we want to use xml test reporter once we switch
+      # to all gtest, one can simply do:
+      LD_LIBRARY_PATH="$ld_library_path" \
+          "$test" --gtest_output=xml:"$gtest_reports_dir/$(basename $test).xml"
+      ;;
+  esac
+done
 
 ################################################################################
 # Python tests #
@@ -34,6 +64,19 @@ if [[ "$BUILD_ENVIRONMENT" == *cmake* ]]; then
   exit 0
 fi
 
+if [[ "$BUILD_ENVIRONMENT" == *ubuntu14.04* ]]; then
+  # Hotfix, use hypothesis 3.44.6 on Ubuntu 14.04
+  # See comments on
+  # https://github.com/HypothesisWorks/hypothesis-python/commit/eadd62e467d6cee6216e71b391951ec25b4f5830
+  sudo pip -q uninstall -y hypothesis
+  # "pip install hypothesis==3.44.6" from official server is unreliable on
+  # CircleCI, so we host a copy on S3 instead
+  sudo pip -q install attrs==18.1.0 -f https://s3.amazonaws.com/ossci-linux/wheels/attrs-18.1.0-py2.py3-none-any.whl
+  sudo pip -q install coverage==4.5.1 -f https://s3.amazonaws.com/ossci-linux/wheels/coverage-4.5.1-cp36-cp36m-macosx_10_12_x86_64.whl
+  sudo pip -q install hypothesis==3.44.6 -f https://s3.amazonaws.com/ossci-linux/wheels/hypothesis-3.44.6-py3-none-any.whl
+else
+  pip install --user --no-cache-dir hypothesis==3.59.0
+fi
 
 # Collect additional tests to run (outside caffe2/python)
 EXTRA_TESTS=()
@@ -54,7 +97,7 @@ if [[ $BUILD_ENVIRONMENT == *-rocm* ]]; then
   # On ROCm, RCCL (distributed) development isn't complete.
   # https://github.com/ROCmSoftwarePlatform/rccl
   rocm_ignore_test+=("--ignore $caffe2_pypath/python/data_parallel_model_test.py")
-  rocm_ignore_test+=("--ignore $caffe2_pypath/python/dataio_test.py") 
+  rocm_ignore_test+=("--ignore $caffe2_pypath/python/dataio_test.py")
 fi
 
 # NB: Warnings are disabled because they make it harder to see what
