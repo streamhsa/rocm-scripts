@@ -18,16 +18,16 @@ echo "======================bit_extract==============================" 2>&1 | te
 cd $dir/samples/0_Intro/bit_extract
 make clean
 make
-./bit_extract 2>&1 2>&1 | tee $cwd/hip-samples.log
-echo "======================hcc_dialects==============================" 2>&1 2>&1 | tee -a $cwd/hip-samples.log
+./bit_extract 2>&1 | tee $cwd/hip-samples.log
+echo "======================hcc_dialects==============================" 2>&1 | tee -a $cwd/hip-samples.log
 cd $dir/samples/0_Intro/hcc_dialects
 make clean
 make
-./vadd_amp_arrayview 2>&1 2>&1 | tee -a $cwd/hip-samples.log
-./vadd_hc_am 2>&1 2>&1 | tee -a $cwd/hip-samples.log
-./vadd_hc_array 2>&1 2>&1 | tee -a $cwd/hip-samples.log
-./vadd_hc_arrayview 2>&1 2>&1 | tee -a $cwd/hip-samples.log
-./vadd_hip 2>&1 2>&1 | tee -a $cwd/hip-samples.log
+./vadd_amp_arrayview 2>&1 | tee -a $cwd/hip-samples.log
+./vadd_hc_am 2>&1 | tee -a $cwd/hip-samples.log
+./vadd_hc_array 2>&1 | tee -a $cwd/hip-samples.log
+./vadd_hc_arrayview  2>&1 | tee -a $cwd/hip-samples.log
+./vadd_hip 2>&1 | tee -a $cwd/hip-samples.log
 echo "======================module_api==============================" 2>&1 | tee -a $cwd/hip-samples.log
 cd $dir/samples/0_Intro/module_api
 make clean
@@ -250,11 +250,8 @@ make clean
 make
 ./RecursiveGaussian -e 2>&1 | tee -a $cwd/hip-examples-Applications.log
 
-
 cd $dir
-rm -rf build
-mkdir build
-cd build
+rm -rf build && mkdir build && cd build
 cmake .. -DCMAKE_INSTALL_PREFIX=../install  2>&1 | tee  $cwd/hip_directedtests_build.log
 make -j$(nproc)  2>&1 | tee -a $cwd/hip_directedtests_build.log
 make install  2>&1 | tee -a $cwd/hip_directedtests_build.log
