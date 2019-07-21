@@ -6,7 +6,7 @@
 #export HSA_ENABLE_SDMA=0
 
 cwd=`pwd`
-BASEDIR=$HOME
+BASEDIR=/root
 
 mkdir -p /dockerx/tf-logs
 
