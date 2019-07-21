@@ -1,16 +1,12 @@
 #!/bin/bash
 current=`pwd`
-cwd=#HOME/dockerx
-
+cwd=$HOME/dockerx
 dir1=$HOME
 rm -rf $dir1/HIP
 dir=$dir1/HIP
-
 cd $dir1
-
 git clone https://github.com/ROCm-Developer-Tools/HIP && cd HIP
 git clone https://github.com/ROCm-Developer-Tools/HIP-Examples && cd HIP-Examples && git submodule init && git submodule update
-
 
 echo "======================Samples==============================" 2>&1 | tee $cwd/hip-samples.log
 echo "=====================0_Intro==============================" 2>&1 | tee -a $cwd/hip-samples.log
