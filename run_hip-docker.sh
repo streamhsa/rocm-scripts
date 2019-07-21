@@ -1,10 +1,10 @@
 #!/bin/bash
 current=`pwd`
-cwd=/dockerx
+cwd=#HOME/dockerx
 
-dir1=/root/
+dir1=$HOME
 rm -rf $dir1/HIP
-dir=/root/HIP
+dir=$dir1/HIP
 
 cd $dir1
 
@@ -155,6 +155,7 @@ cd build
 ./gpuburn-hip 2>&1 | tee -a $cwd/hip-examples.log
 echo "======================babelstream==============================" 2>&1 | tee -a $cwd/hip-examples.log
 cd $dir/HIP-Examples/
+rm -rf babelstream
 git clone https://github.com/UoB-HPC/babelstream
 cd $dir/HIP-Examples/babelstream
 make clean
@@ -169,6 +170,7 @@ make clean
 ./HIP-nbody-soa.sh 2>&1 | tee -a $cwd/hip-examples.log
 echo "======================mixbench==============================" 2>&1 | tee -a $cwd/hip-examples.log
 cd $dir/HIP-Examples/
+rm -rf mixbench
 git clone https://github.com/ekondis/mixbench.git
 cd $dir/HIP/HIP-Examples/mixbench
 make clean
@@ -249,3 +251,11 @@ make
 ./RecursiveGaussian -e 2>&1 | tee -a $cwd/hip-examples-Applications.log
 
 
+cd $dir
+rm -rf build
+mkdir build
+cd build
+cmake .. -DCMAKE_INSTALL_PREFIX=../install  2>&1 | tee  $cwd/hip_directedtests_build.log
+make -j$(nproc)  2>&1 | tee -a $cwd/hip_directedtests_build.log
+make install  2>&1 | tee -a $cwd/hip_directedtests_build.log
+make check -j$(nproc) -e 2>&1 | tee $cwd/hip_directedtests.log
