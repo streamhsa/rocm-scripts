@@ -78,6 +78,7 @@ else
   pip install --user --no-cache-dir hypothesis==3.59.0
 fi
 
+pip install hypothesis==3.57.0
 # Collect additional tests to run (outside caffe2/python)
 EXTRA_TESTS=()
 
