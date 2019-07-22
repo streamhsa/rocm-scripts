@@ -17,7 +17,7 @@ make MIOpenDriver
 ./bin/MIOpenDriver conv -n 1 -c 64 -H 130 -W 130 -k 3 -y 3 -x 3 -p 0 -q 0 -u 1 -v 1 -l 1 -j 1 -m conv -g 1 -t 1 2>&1 | tee -a MIOpenDriver_run.log
 
 
-cd $dir/MLOpen/build_ocl
+cd $dir/MLOpen/build_opencl
 make clean
 rm -rf *
 cmake -DMIOPEN_TEST_ALL=ON -DMIOPEN_BACKEND=OpenCL -DMIOPEN_MAKE_BOOST_PUBLIC=ON -DBoost_USE_STATIC_LIBS=Off -DMIOPEN_TEST_FLAGS="--disable-verification-cache" -DOPENCL_INCLUDE_DIRS=/opt/rocm/opencl/include/ -DOPENCL_LIBRARIES=/opt/rocm/opencl/lib/x86_64/libamdocl64.so .. | tee -a mlopenocl_build.log
