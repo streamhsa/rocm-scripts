@@ -12,7 +12,7 @@ mkdir -p /dockerx/tf-norccllogs
 
 MODELDIR="$BASEDIR/models"
 BENCHDIR="$BASEDIR/benchmarks"
-LOGDIR="/dockerx/tf-rccllogs"
+LOGDIR="/dockerx/tf-norccllogs"
 
 run_tf_cnn_benchmarks()
 {
