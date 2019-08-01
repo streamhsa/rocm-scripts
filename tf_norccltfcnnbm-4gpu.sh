@@ -8,7 +8,7 @@ cwd=`pwd`
 BASEDIR=/root
 
 
-mkdir -p /dockerx/tf-rccllogs
+mkdir -p /dockerx/tf-norccllogs
 
 MODELDIR="$BASEDIR/models"
 BENCHDIR="$BASEDIR/benchmarks"
@@ -34,7 +34,7 @@ run_tf_cnn_benchmarks()
 	do
          /usr/bin/python3 ./scripts/tf_cnn_benchmarks/tf_cnn_benchmarks.py --model=$i \
          --print_training_accuracy=True \
-         --num_batches=${ITERATIONS} --all_reduce_spec=nccl --variable_update=replicated \
+         --num_batches=${ITERATIONS} --variable_update=parameter_server --local_parameter_device=cpu \
          --num_gpus=${NGPUS} --batch_size=$j  2>&1 | tee $LOGDIR/tfrccl-$i-$j.txt
          done
          done
