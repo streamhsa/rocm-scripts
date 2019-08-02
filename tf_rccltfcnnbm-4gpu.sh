@@ -72,7 +72,7 @@ run_tf_cnn_benchmarks_256()
     MODELS="alexnet googlenet resnet50_v1.5"
         NGPUS=4
         ITERATIONS=50
-        BATCH_SIZE=128
+        BATCH_SIZE=256
 
         for j in ${BATCH_SIZE[@]}
         do
