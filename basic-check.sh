@@ -8,6 +8,10 @@ echo "======================running clinfo==============================" 2>&1 |
 echo "======================running rocminfo=============================" 2>&1 | tee $logs/rocminfo.log
 /opt/rocm/bin/rocminfo 2>&1 | tee -a $logs/rocminfo.log
 
+echo "======================running romsmi============================="
+/opt/rocm/bin/rocm_smi.py
+/opt/rocm/bin/rocm_smi.py -a
+
 echo "======================running hipinfo=============================" 2>&1 | tee $logs/hipinfo.log
 cp -rf /opt/rocm/hip/samples /tmp/
 cd /tmp/samples/1_Utils/hipInfo
