@@ -1,7 +1,7 @@
 #!/bin/bash
 current=`pwd`
-cwd=$HOME/dockerx
-dir1=$HOME
+cwd=/dockerx
+dir1=/root
 rm -rf $dir1/HIP
 dir=$dir1/HIP
 cd $dir1
@@ -165,10 +165,10 @@ make clean
 ./HIP-nbody-orig.sh 2>&1 | tee -a $cwd/hip-examples.log
 ./HIP-nbody-soa.sh 2>&1 | tee -a $cwd/hip-examples.log
 echo "======================mixbench==============================" 2>&1 | tee -a $cwd/hip-examples.log
-cd $dir/HIP-Examples/
+cd $dir/HIP-Examples
 rm -rf mixbench
 git clone https://github.com/ekondis/mixbench.git
-cd $dir/HIP/HIP-Examples/mixbench
+cd $dir/HIP-Examples/mixbench
 make clean
 export HIP_PATH=/opt/rocm/hip
 sed -i 's/\/usr\/local\/cuda/\/opt\/rocm\/opencl/g' Makefile
