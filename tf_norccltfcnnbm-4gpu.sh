@@ -58,7 +58,7 @@ run_tf_cnn_benchmarks_128()
     /usr/bin/python3 ./scripts/tf_cnn_benchmarks/tf_cnn_benchmarks.py --model=$i \
     --print_training_accuracy=True \
     --num_batches=${ITERATIONS} --variable_update=parameter_server --local_parameter_device=cpu \
-    --num_gpus=${NGPUS} --batch_size=$j  2>&1 | tee $LOGDIR/tf-$i-$j.txt
+    --num_gpus=${NGPUS} --batch_size=$j  2>&1 | tee $LOGDIR/tfrccl-$i-$j.txt
     done
     done
 
@@ -81,7 +81,7 @@ run_tf_cnn_benchmarks_256()
     /usr/bin/python3 ./scripts/tf_cnn_benchmarks/tf_cnn_benchmarks.py --model=$i \
     --print_training_accuracy=True \
     --num_batches=${ITERATIONS} --variable_update=parameter_server --local_parameter_device=cpu \
-    --num_gpus=${NGPUS} --batch_size=$j  2>&1 | tee $LOGDIR/tf-$i-$j.txt
+    --num_gpus=${NGPUS} --batch_size=$j  2>&1 | tee $LOGDIR/tfrccl-$i-$j.txt
     done
     done
 
@@ -105,7 +105,7 @@ run_tf_cnn_benchmarks_512()
     /usr/bin/python3 ./scripts/tf_cnn_benchmarks/tf_cnn_benchmarks.py --model=$i \
     --print_training_accuracy=True \
     --num_batches=${ITERATIONS} --variable_update=parameter_server --local_parameter_device=cpu \
-    --num_gpus=${NGPUS} --batch_size=$j  2>&1 | tee $LOGDIR/tf-$i-$j.txt
+    --num_gpus=${NGPUS} --batch_size=$j  2>&1 | tee $LOGDIR/tfrccl-$i-$j.txt
     done
     done
 } 
