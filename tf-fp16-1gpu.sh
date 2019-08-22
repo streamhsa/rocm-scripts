@@ -59,7 +59,7 @@ function tf_test()
 
 gpu_array=1
 modes=('False')
-models=('resnet50 resnet101 vgg19')
+models=( resnet50 resnet101 vgg19 )
 batch_array=64
 
 #download_tensorflow_benchmarks
