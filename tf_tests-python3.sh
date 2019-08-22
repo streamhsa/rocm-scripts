@@ -158,11 +158,13 @@ run_slim_cifarnet()
     ./scripts/train_cifarnet_on_cifar10.sh  2>&1 | tee -a slim_cifarnet.txt
         cp -rf slim_cifarnet.txt $LOGDIR
 
-        #Total Avg. Execution time : 40mins
-        # Expected "final" output:
-        #2018-03-30 04:21:55.142483: I tensorflow/core/kernels/logging_ops.cc:79] eval/Accuracy[0.8526]
-        #2018-03-30 04:21:55.142565: I tensorflow/core/kernels/logging_ops.cc:79] eval/Recall_5[0.9918]
-        #INFO:tensorflow:Finished evaluation at 2018-03-30-04:21:55
+          #Total Avg. Execution time : 40mins
+        # Expected "final" output: Ran for 2000
+       
+#I0822 10:24:38.175445 140455272515328 learning.py:507] global step 1990: loss = 57.4365 (0.504 sec/step)
+#I0822 10:24:43.236582 140455272515328 learning.py:507] global step 2000: loss = 57.4384 (0.507 sec/step)
+#I0822 10:24:43.238091 140455272515328 learning.py:777] Stopping Training.
+#I0822 10:24:43.238430 140455272515328 learning.py:785] Finished training! Saving model to disk.
 
 }
 run_tf_cnn_benchmarks()
