@@ -3,14 +3,10 @@ export MIOPEN_DEBUG_AMD_WINOGRAD_RXS_FP16=1
 export TF_ROCM_FUSION_ENABLE=1
 
 cwd=`pwd`
-BASEDIR=$HOME
-
-cd $cwd
-rm -rf logs
-mkdir -p logs
+BASEDIR=/root
 
 export BENCHDIR="$BASEDIR/benchmarks"
-export LOGDIR="$cwd/logs"
+export LOGDIR=/dockerx
 
 download_tensorflow_benchmarks()
 {
@@ -63,7 +59,7 @@ function tf_test()
 
 gpu_array=1
 modes=('False')
-models=resnet50
+models="resnet50 resnet101 vgg19"
 batch_array=64
 
 #download_tensorflow_benchmarks
