@@ -8,40 +8,40 @@ chmod 775 micro_benchmarking_pytorch.py fp16util.py
 
 pip install torchvision==0.2.2.post3
 
-echo "========================= pytorch resnet50====================="
+echo "========================= pytorch resnet50 256====================="
 python micro_benchmarking_pytorch.py --network resnet50 --batch-size 256 --iterations 10
-echo "========================= pytorch resnet101====================="
+echo "========================= pytorch resnet101 128====================="
 python micro_benchmarking_pytorch.py --network resnet101 --batch-size 128 --iterations 10
-echo "========================= pytorch resnet152====================="
+echo "========================= pytorch resnet152 128====================="
 python micro_benchmarking_pytorch.py --network resnet152 --batch-size 128 --iterations 10
-echo "========================= pytorch Alexnet====================="
+echo "========================= pytorch Alexnet 1024====================="
 python micro_benchmarking_pytorch.py --network alexnet --batch-size 1024 --iterations 10
-echo "========================= pytorch Squeezenet===================="
+echo "========================= pytorch Squeezenet 128===================="
 python micro_benchmarking_pytorch.py --network SqueezeNet --batch-size 128 --iterations 10 
-echo "========================= pytorch Inceptionv3====================="
+echo "========================= pytorch Inceptionv3 256====================="
 python micro_benchmarking_pytorch.py --network inception_v3 --batch-size 256 --iterations 10
-echo "========================= pytorch densenet121====================="
+echo "========================= pytorch densenet121 128====================="
 python micro_benchmarking_pytorch.py --network densenet121 --batch-size 128 --iterations 10
-echo "========================= pytorch vgg16====================="
+echo "========================= pytorch vgg16 128====================="
 python micro_benchmarking_pytorch.py --network vgg16 --batch-size 128 --iterations 10 
-echo "========================= pytorch vgg19===================="
+echo "========================= pytorch vgg19 128===================="
 python micro_benchmarking_pytorch.py --network vgg19 --batch-size 128 --iterations 10
 
-echo "========================= pytorch  resnet50 fp16====================="
+echo "========================= pytorch  resnet50 fp16 256====================="
 python micro_benchmarking_pytorch.py --network resnet50 --batch-size 256 --iterations 10 --fp16 1
-echo "========================= pytorch  resnet101 fp16====================="
+echo "========================= pytorch  resnet101 fp16 128====================="
 python micro_benchmarking_pytorch.py --network resnet101 --batch-size 128 --iterations 10 --fp16 1
-echo "========================= pytorch  resnet152 fp16====================="
+echo "========================= pytorch  resnet152 fp16 128 ====================="
 python micro_benchmarking_pytorch.py --network resnet152 --batch-size 128 --iterations 10 --fp16 1
-echo "========================= pytorch  alexnet fp16====================="
+echo "========================= pytorch  alexnet fp16 1024====================="
 python micro_benchmarking_pytorch.py --network alexnet --batch-size 1024 --iterations 10 --fp16 1
-echo "========================= pytorch  squeeznet fp16====================="
+echo "========================= pytorch  squeeznet fp16 128====================="
 python micro_benchmarking_pytorch.py --network SqueezeNet --batch-size 128 --iterations 10 --fp16 1
-echo "========================= pytorch inceptionv3 fp16====================="
+echo "========================= pytorch inceptionv3 fp16 256====================="
 python micro_benchmarking_pytorch.py --network inception_v3 --batch-size 256 --iterations 10 --fp16 1
-echo "========================= pytorch  densenet121 fp16====================="
+echo "========================= pytorch  densenet121 fp16 128====================="
 python micro_benchmarking_pytorch.py --network densenet121 --batch-size 128 --iterations 10 --fp16 1
-echo "========================= pytorch  vgg16 fp16====================="
+echo "========================= pytorch  vgg16 fp16 128====================="
 python micro_benchmarking_pytorch.py --network vgg16 --batch-size 128 --iterations 10 --fp16 1
-echo "========================= pytorch  vgg19 fp16====================="
+echo "========================= pytorch  vgg19 fp16 128====================="
 python micro_benchmarking_pytorch.py --network vgg19 --batch-size 128 --iterations 10 --fp16 1
