@@ -3,7 +3,6 @@
 cd /root/pytorch/build
 wget  https://raw.githubusercontent.com/wiki/ROCmSoftwarePlatform/pytorch/micro_benchmarking_pytorch.py
 wget  https://raw.githubusercontent.com/wiki/ROCmSoftwarePlatform/pytorch/fp16util.py 
-apt-get update -y && apt-get install -y dos2unix
 chmod 775 micro_benchmarking_pytorch.py fp16util.py 
 
 pip install torchvision==0.2.2.post3
