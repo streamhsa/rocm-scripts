@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 cd /root/pytorch/build
 wget  https://raw.githubusercontent.com/wiki/ROCmSoftwarePlatform/pytorch/micro_benchmarking_pytorch.py
