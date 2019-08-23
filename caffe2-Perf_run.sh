@@ -8,7 +8,7 @@
   
 echo "=========================start caffe2 benchmark====================="
 cd /root/caffe2/build
-wget http://gitlab1.amd.com/rnallama/caffe2_benchmarks/raw/master/convnet_benchmarks_dpm.py
+wget https://raw.githubusercontent.com/pramenku/rocm-scripts/master/convnet_benchmarks_dpm.py
 chmod 775 convnet_benchmarks_dpm.py
 apt-get update -y && apt-get install -y dos2unix
 dos2unix convnet_benchmarks_dpm.py
