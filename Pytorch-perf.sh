@@ -5,6 +5,8 @@ wget  https://raw.githubusercontent.com/wiki/ROCmSoftwarePlatform/pytorch/micro_
 wget  https://raw.githubusercontent.com/wiki/ROCmSoftwarePlatform/pytorch/fp16util.py 
 chmod 775 micro_benchmarking_pytorch.py fp16util.py 
 
+apt-get install -y update && apt-get install -y dos2unix
+
 pip install torchvision==0.2.2.post3
 
 echo "========================= pytorch resnet50 256====================="
