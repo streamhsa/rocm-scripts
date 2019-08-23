@@ -2,12 +2,14 @@
  
 # check if caffe2 is  build and installed properly. success => all good; failure => not built and installed properly.
   echo "===============If success, caffe2 installed properly======="
-  cd /home/caffe2/build
+  cd /root/caffe2/build
   python -c 'from caffe2.python import core' 2>/dev/null && echo "Success" || echo "Failure"
   
   
 echo "=========================start caffe2 benchmark====================="
-cd /home/caffe2/build
+cd /root/caffe2/build
+wget http://gitlab1.amd.com/rnallama/caffe2_benchmarks/blob/master/convnet_benchmarks_dpm.py
+chmod 775 convnet_benchmarks_dpm.py
 
 
 ####################################1-GPU#############################################
