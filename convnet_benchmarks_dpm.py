@@ -659,7 +659,7 @@ def Benchmark(args, model_map):
     arg_scope = {
             'order': 'NCHW',
             'use_cudnn': True,
-            'ws_nbytes_limit': args.cudnn_ws,
+            'ws_nbytes_limit': args.cudnn_ws*1024*1024,
         }
     model = model_helper.ModelHelper(
         name=args.model, arg_scope=arg_scope
@@ -706,9 +706,10 @@ def Benchmark(args, model_map):
 
     workspace.RunNetOnce(model.param_init_net)
     workspace.CreateNet(model.net)
-    workspace.BenchmarkNet(
+    ms_per_iter = workspace.BenchmarkNet(
         model.net.Proto().name, args.warmup_iterations, args.iterations,
         args.layer_wise_benchmark)
+    print("number of images/sec: {}".format(round(args.batch_size*1000/ms_per_iter[0],2)))
 
 
 def GetArgumentParser():
@@ -723,7 +724,8 @@ def GetArgumentParser():
     parser.add_argument(
         "--cudnn_ws",
         type=int,
-        help="The cudnn workspace size."
+        default=1024,
+        help="The cudnn workspace size in MB."
     )
     parser.add_argument(
         "--iterations",
@@ -792,4 +794,3 @@ if __name__ == '__main__':
             model_map[args.model][1] =  args.image_size
 
         Benchmark(args, model_map)
-
