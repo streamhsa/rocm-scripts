@@ -1,7 +1,7 @@
 #!/bin/bash
 current=`pwd`
-dir=/root/driver
-logs=/dockerx
+
+logs=$current
 
 echo "======================running clinfo==============================" 2>&1 | tee $logs/clinfo.log
 /opt/rocm/opencl/bin/x86_64/clinfo 2>&1 | tee -a $logs/clinfo.log
