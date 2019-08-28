@@ -1,7 +1,7 @@
 #!/bin/bash
 current=`pwd`
-cwd=/dockerx
-dir1=/root
+cwd=$current
+dir1=$current
 rm -rf $dir1/HIP
 dir=$dir1/HIP
 cd $dir1
