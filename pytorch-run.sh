@@ -1,6 +1,8 @@
-cd /home/pytorch
-LOGDIR=/dockerx
+cd /root/pytorch
+current=`pwd`
+LOGDIR=$current
 export PYTORCH_TEST_WITH_ROCM=1 
+export LD_LIBRARY_PATH=/opt/rocm/lib:$LD_LIBRARY_PATH
 echo "========================= py-autograd====================="
 python test/test_autograd.py -v 2>&1 | tee $LOGDIR/py-autograd.log
 echo "========================= py-cuda====================="
