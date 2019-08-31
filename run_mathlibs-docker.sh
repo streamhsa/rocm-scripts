@@ -11,22 +11,28 @@ ctest --output-on-failure 2>&1 | tee $logs/rocrand-ut.log
 
 echo "==============================rocprim============================="
 cd $dir/rocPRIM/
-rm -rf build && ./install -ic 
+rm -rf build && mkdir build
 cd build
+CXX=/opt/rocm/bin/hcc cmake -DBUILD_TEST=ON -DDISABLE_WERROR=ON -DBUILD_BENCHMARK=OFF ../.
+make -j$(nproc)
 ctest --output-on-failure 2>&1 | tee $logs/rocprim.log
-
-echo "==============================hipcub=============================="
-cd $dir/hipCUB/
-rm -rf build && ./install -ic
-cd build
-ctest --output-on-failure 2>&1 | tee $logs/hipcub.log
-
 
 echo "==============================rocthrust=============================="
 cd $dir/rocThrust/
-rm -rf build && ./install -ic 
+rm -rf build && mkdir build
 cd build
+CXX=/opt/rocm/bin/hcc cmake -DBUILD_TEST=ON ../.
+make -j$(nproc)
 ctest --output-on-failure 2>&1 | tee $logs/rocthurst.log
+
+echo "==============================hipcub=============================="
+cd $dir/hipCUB/
+rm -rf build && mkdir build
+cd build
+CXX=/opt/rocm/bin/hcc cmake -DBUILD_TEST=ON ../.
+make -j$(nproc)
+ctest --output-on-failure 2>&1 | tee $logs/hipcub.log
+
 
 
 cd $dir
