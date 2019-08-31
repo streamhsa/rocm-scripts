@@ -1,13 +1,12 @@
 #!/bin/bash
 cd /root/pytorch/build
+export LD_LIBRARY_PATH=/opt/rocm/lib:$LD_LIBRARY_PATH
 wget  https://raw.githubusercontent.com/wiki/ROCmSoftwarePlatform/pytorch/micro_benchmarking_pytorch.py
 wget  https://raw.githubusercontent.com/wiki/ROCmSoftwarePlatform/pytorch/fp16util.py 
 wget https://raw.githubusercontent.com/wiki/ROCmSoftwarePlatform/pytorch/shufflenet.py 
 wget https://raw.githubusercontent.com/wiki/ROCmSoftwarePlatform/pytorch/shufflenet_v2.py 
 
 chmod 775 micro_benchmarking_pytorch.py fp16util.py shufflenet.py shufflenet_v2.py 
-
-apt-get -y update && apt-get install -y dos2unix
 
 pip install torchvision==0.2.2.post3
 
