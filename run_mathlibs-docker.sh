@@ -11,21 +11,23 @@ ctest --output-on-failure 2>&1 | tee $logs/rocrand-ut.log
 
 echo "==============================rocprim============================="
 cd $dir/rocPRIM/
-#rm -rf build && ./install -ic 
+rm -rf build && ./install -ic 
 cd build
 ctest --output-on-failure 2>&1 | tee $logs/rocprim.log
 
+echo "==============================hipcub=============================="
+cd $dir/hipCUB/
+rm -rf build && ./install -ic
+cd build
+ctest --output-on-failure 2>&1 | tee $logs/hipcub.log
+
+
 echo "==============================rocthrust=============================="
 cd $dir/rocThrust/
-#rm -rf build && ./install -ic 
+rm -rf build && ./install -ic 
 cd build
 ctest --output-on-failure 2>&1 | tee $logs/rocthurst.log
 
-echo "==============================hipcub=============================="
-cd $dir/hipCUB/
-#rm -rf build && ./install -ic
-cd build
-ctest --output-on-failure 2>&1 | tee $logs/hipcub.log
 
 cd $dir
 echo "==============================rocfft============================="
