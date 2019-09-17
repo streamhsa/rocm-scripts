@@ -17,20 +17,20 @@ fi
 caffe2_pypath="$(cd /usr && $PYTHON -c 'import os; import caffe2; print(os.path.dirname(os.path.realpath(caffe2.__file__)))')"
 echo "====================================================resnet50==================================="
 # Resnet50
-#if (( $num_gpus == 0 )); then
-#    "$PYTHON" "$caffe2_pypath/python/examples/imagenet_trainer.py" --train_data null --batch_size 64 --epoch_size 6400 --num_epochs 2 --use_cpu
-#fi
+if (( $num_gpus == 0 )); then
+    "$PYTHON" "$caffe2_pypath/python/examples/imagenet_trainer.py" --train_data null --batch_size 64 --epoch_size 6400 --num_epochs 2 --use_cpu
+fi
 echo "====================================================resent50 64 FP32 and FP16==================================="
-#if (( $num_gpus >= 1 )); then
-#    "$PYTHON" "$caffe2_pypath/python/examples/imagenet_trainer.py" --train_data null --batch_size 64 --epoch_size 6400 --num_epochs 2 --num_gpus 1
-#    "$PYTHON" "$caffe2_pypath/python/examples/imagenet_trainer.py" --train_data null --batch_size 64 --epoch_size 6400 --num_epochs 2 --num_gpus 1 --float16_compute --dtype float16
-#fi
-#if (( $num_gpus >= 2 )); then
-#    "$PYTHON" "$caffe2_pypath/python/examples/imagenet_trainer.py" --train_data null --batch_size 128 --epoch_size 12800 --num_epochs 2 --num_gpus 2
-#fi
-#if (( $num_gpus >= 4 )); then
-#    "$PYTHON" "$caffe2_pypath/python/examples/imagenet_trainer.py" --train_data null --batch_size 128 --epoch_size 12800 --num_epochs 2 --num_gpus 4
-#fi
+if (( $num_gpus >= 1 )); then
+    "$PYTHON" "$caffe2_pypath/python/examples/imagenet_trainer.py" --train_data null --batch_size 64 --epoch_size 6400 --num_epochs 2 --num_gpus 1
+    "$PYTHON" "$caffe2_pypath/python/examples/imagenet_trainer.py" --train_data null --batch_size 64 --epoch_size 6400 --num_epochs 2 --num_gpus 1 --float16_compute --dtype float16
+fi
+if (( $num_gpus >= 2 )); then
+    "$PYTHON" "$caffe2_pypath/python/examples/imagenet_trainer.py" --train_data null --batch_size 128 --epoch_size 12800 --num_epochs 2 --num_gpus 2
+fi
+if (( $num_gpus >= 4 )); then
+    "$PYTHON" "$caffe2_pypath/python/examples/imagenet_trainer.py" --train_data null --batch_size 128 --epoch_size 12800 --num_epochs 2 --num_gpus 4
+fi
 
 echo "====================================================Shufflenet==================================="
 # Shufflenet
