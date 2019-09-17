@@ -29,7 +29,7 @@ run_tf_xla_cnn_bm()
 #     MODELS="alexnet"
     #MODELS="alexnet googlenet inception3 inception4 lenet overfeat resnet50 resnet152_v2 trivial vgg11 vgg16 vgg19 resnet101 resnet50_v1.5"
         MODELS="resnet50 resnet101 vgg19"
-		NGPUS=1
+		NGPUS=2
  #       ITERATIONS=50
 #        BATCH_SIZE=( 1 2 4 8 16 32 64 128 )
 #        BATCH_SIZE=64
