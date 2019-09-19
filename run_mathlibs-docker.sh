@@ -3,6 +3,8 @@ current=`pwd`
 dir=/root/driver
 logs=/dockerx
 
+export LD_LIBRARY_PATH=/opt/rocm/lib:$LD_LIBRARY_PATH
+
 echo "==============================rocrand=============================="
 cd $dir/rocRAND/build
 ctest --output-on-failure 2>&1 | tee $logs/rocrand-ut.log
