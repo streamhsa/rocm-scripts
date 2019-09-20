@@ -5,6 +5,8 @@ dir1=$current
 rm -rf $dir1/HIP
 dir=$dir1/HIP
 cd $dir1
+export LD_LIBRARY_PATH=/opt/rocm/lib:$LD_LIBRARY_PATH
+
 git clone https://github.com/ROCm-Developer-Tools/HIP && cd HIP
 git clone https://github.com/ROCm-Developer-Tools/HIP-Examples && cd HIP-Examples && git submodule init && git submodule update
 
