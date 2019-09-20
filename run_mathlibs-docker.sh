@@ -43,13 +43,13 @@ make -j$(nproc)
 ctest --output-on-failure 2>&1 | tee $logs/hipcub.log
 
 
-#echo "==============================rocthrust=============================="
-#cd $dir/rocThrust/
-#rm -rf build && mkdir build
-#cd build
-#CXX=/opt/rocm/bin/hcc cmake -DBUILD_TEST=ON ../.
-#make -j$(nproc)
-#ctest --output-on-failure 2>&1 | tee $logs/rocthurst.log
+echo "==============================rocthrust=============================="
+cd $dir/rocThrust/
+rm -rf build && mkdir build
+cd build
+CXX=/opt/rocm/bin/hcc cmake -DBUILD_TEST=ON ../.
+make -j$(nproc)
+ctest --output-on-failure 2>&1 | tee $logs/rocthurst.log
 
 
 
