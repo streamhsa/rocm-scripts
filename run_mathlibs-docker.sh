@@ -1,6 +1,6 @@
 #!/bin/bash
 current=`pwd`
-dir=/root/driver
+dir=/home
 logs=/dockerx
 
 export LD_LIBRARY_PATH=/opt/rocm/lib:$LD_LIBRARY_PATH
